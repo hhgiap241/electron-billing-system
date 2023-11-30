@@ -96,14 +96,17 @@
     }
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.43",
     "antd": "^5.11.5",
+    "clsx": "^2.0.0",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-store": "^8.1.0",
     "electron-updater": "^6.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-jss": "^10.10.0",
     "react-router-dom": "^6.16.0"
   },
   "devDependencies": {

@@ -1,4 +1,9 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Row, Col } from 'antd';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import BackgroundLeft from '../../components/BackgroundLeft';
+import Text from '../../components/Text';
+import useStyles from './styles';
+import InputComponent from '../../components/Input';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -15,49 +20,99 @@ type FieldType = {
 };
 
 function Login() {
+  const classes = useStyles();
+
+  const forgotLoginId = () => {
+    console.log('button login clicked');
+  };
+
   return (
-    <div className="flex items-center justify-center h-screen">
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
+    <Row>
+      <BackgroundLeft />
+      <Col
+        xs={{ span: 24 }}
+        md={{ span: 12 }}
+        className={classes.backgroundRight}
       >
-        <Form.Item<FieldType>
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input />
-        </Form.Item>
+        <Row className={classes.itemRight}>
+          <Col xs={{ span: 24 }}>
+            <div className={classes.loginForm}>
+              <Form
+                name="loginForm"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                layout="vertical"
+              >
+                <Form.Item style={{ marginBottom: 50 }}>
+                  <Text className={classes.title}>Login</Text>
+                </Form.Item>
+                <Form.Item
+                  className={classes.removeRequired}
+                  label="Username"
+                  name="username"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your username!',
+                    },
+                  ]}
+                >
+                  <InputComponent
+                    type=""
+                    prefix={<UserOutlined className="site-form-item-icon" />}
+                    placeholder="Please input your username!"
+                    bordered={false}
+                  />
+                </Form.Item>
 
-        <Form.Item<FieldType>
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
+                <Form.Item
+                  className={classes.removeRequired}
+                  label="Password"
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your password!',
+                    },
+                  ]}
+                >
+                  <InputComponent
+                    type="password"
+                    prefix={<LockOutlined className="site-form-item-icon" />}
+                    placeholder="Please input your password!"
+                    bordered={false}
+                  />
+                </Form.Item>
 
-        <Form.Item<FieldType>
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{ offset: 8, span: 16 }}
-        >
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
+                <Form.Item<FieldType> name="remember" valuePropName="checked">
+                  <Checkbox>Remember me</Checkbox>
+                </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit" className="bg-[#1677ff]">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+                <Form.Item>
+                  <Button block type="primary" htmlType="submit">
+                    Submit
+                  </Button>
+                </Form.Item>
+                <Form.Item className={classes.forgetPassword}>
+                  <Text
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => forgotLoginId()}
+                  >
+                    hihi
+                  </Text>
+                </Form.Item>
+              </Form>
+            </div>
+          </Col>
+          <Col xs={24}>
+            <div className={classes.footer}>
+              Copyright (c) 2023 findgate, Inc. Allright Reserved.
+            </div>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 }
 
