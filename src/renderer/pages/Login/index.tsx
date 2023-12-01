@@ -1,18 +1,11 @@
 import { Checkbox, Form, Row, Col } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import BackgroundLeft from '../../components/BackgroundLeft';
 import Text from '../../components/Text';
 import useStyles from './styles';
 import InputComponent from '../../components/Input';
 import Button from '../../components/Button';
-
-const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
 
 type FieldType = {
   username?: string;
@@ -22,9 +15,19 @@ type FieldType = {
 
 function Login() {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   const forgotLoginId = () => {
-    console.log('button login clicked');
+    console.log('button forgot login clicked');
+  };
+
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+    navigate('/');
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
@@ -110,7 +113,7 @@ function Login() {
           </Col>
           <Col xs={24}>
             <div className={classes.footer}>
-              Copyright (c) 2023 findgate, Inc. Allright Reserved.
+              Copyright (c) 2023 Photo Vu Duc Trang, Inc. Allright Reserved.
             </div>
           </Col>
         </Row>
