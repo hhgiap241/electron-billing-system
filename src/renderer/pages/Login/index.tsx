@@ -1,9 +1,10 @@
-import { Button, Checkbox, Form, Row, Col } from 'antd';
+import { Checkbox, Form, Row, Col } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import BackgroundLeft from '../../components/BackgroundLeft';
 import Text from '../../components/Text';
 import useStyles from './styles';
 import InputComponent from '../../components/Input';
+import Button from '../../components/Button';
 
 const onFinish = (values: any) => {
   console.log('Success:', values);
@@ -43,6 +44,7 @@ function Login() {
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 layout="vertical"
+                className={classes.formItem}
               >
                 <Form.Item style={{ marginBottom: 50 }}>
                   <Text className={classes.title}>Login</Text>
@@ -62,7 +64,7 @@ function Login() {
                     type=""
                     prefix={<UserOutlined className="site-form-item-icon" />}
                     placeholder="Please input your username!"
-                    bordered={false}
+                    bordered
                   />
                 </Form.Item>
 
@@ -81,7 +83,7 @@ function Login() {
                     type="password"
                     prefix={<LockOutlined className="site-form-item-icon" />}
                     placeholder="Please input your password!"
-                    bordered={false}
+                    bordered
                   />
                 </Form.Item>
 
@@ -94,12 +96,13 @@ function Login() {
                     Submit
                   </Button>
                 </Form.Item>
-                <Form.Item className={classes.forgetPassword}>
+                <Form.Item className={classes.forgetPasswordForm}>
                   <Text
                     style={{ cursor: 'pointer' }}
                     onClick={() => forgotLoginId()}
+                    className={classes.forgetPasswordText}
                   >
-                    hihi
+                    Forget Password?
                   </Text>
                 </Form.Item>
               </Form>

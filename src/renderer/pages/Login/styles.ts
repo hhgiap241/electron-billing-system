@@ -40,11 +40,17 @@ const useStyles = createUseStyles({
         content: '""',
       },
   },
-  forgetPassword: {
-    margin: '90px 0 20px',
+  forgetPasswordForm: {
+    margin: '0 0 20px',
     textAlign: 'center',
+  },
+  formItem: {
+    width: '50%',
+  },
+  forgetPasswordText: {
     color: COLOR.primary,
-    fontWWeight: 600,
+    fontWeight: 600,
+    cursor: 'pointer',
   },
 });
 

@@ -17,6 +17,10 @@ module.exports = {
     'react/function-component-definition': 'off',
     'react/jsx-props-no-spreading': 'off',
     'no-useless-return': 'off',
+    'import/prefer-default-export': [
+      'off' | 'warn' | 'error',
+      { target: 'any' },
+    ],
   },
   parserOptions: {
     ecmaVersion: 2022,
